@@ -172,7 +172,10 @@ class Document extends \DOMDocument
     }
         
     private function convertToUtf8(string $html): string {
-        if (mb_detect_encoding($html, mb_detect_order(), true) === 'UTF-8') {
+        if (mb_detect_encoding($html, mb_detect_order(), true) === 'UTF-8')
+        {
+        	// https://www.php.net/manual/en/domdocument.loadhtml.php#74777
+			$html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
             return $html;
         }
 
