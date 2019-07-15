@@ -190,7 +190,7 @@ class Document extends \DOMDocument
 
             // Fallback to iconv if available.
             } elseif (extension_loaded('iconv')) {
-                $htmlIconv = iconv($charset, 'UTF-8', $html);
+                $htmlIconv = iconv($charset, 'UTF-8//IGNORE', $html);
 
                 if ($htmlIconv !== false) {
                     $html = $htmlIconv;
